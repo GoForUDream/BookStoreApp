@@ -1,0 +1,31 @@
+{
+  "name": "bookstore-app",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @bookstore/shared && concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev -w @bookstore/backend",
+    "dev:frontend": "npm run dev -w @bookstore/frontend",
+    "build": "npm run build -w @bookstore/shared && npm run build -w @bookstore/backend && npm run build -w @bookstore/frontend",
+    "db:generate": "npm run db:generate -w @bookstore/backend",
+    "db:push": "npm run db:push -w @bookstore/backend",
+    "db:seed": "npm run db:seed -w @bookstore/backend",
+    "db:studio": "npm run db:studio -w @bookstore/backend",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "setup": "npm install && npm run docker:up && sleep 3 && npm run db:push && npm run db:seed",
+    "codegen": "npm run codegen -w @bookstore/shared"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.6",
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.0.1",
+    "pg": "^8.16.3"
+  }
+}
