@@ -16,7 +16,7 @@ const BookDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [tabValue, setTabValue] = useState(0);
   const [reviewForm, setReviewForm] = useState({ rating: 5, title: '', comment: '' });
-  const [inWishlist, setInWishlist] = useState(false);
+  const [inWishlist] = useState(false);
 
   const { data, loading, refetch } = useQuery(BOOK_QUERY, { variables: { slug } });
   const [createReview, { loading: reviewLoading }] = useMutation(CREATE_REVIEW_MUTATION, {

@@ -15,7 +15,7 @@ interface BookCardProps {
 }
 
 const BookCard = ({ book, inWishlist = false, onWishlistChange }: BookCardProps) => {
-  const { addToCart, isInCart } = useCart();
+  const { addToCart } = useCart();
   const { isAuthenticated } = useAuthStore();
 
   const [addToWishlist] = useMutation(ADD_TO_WISHLIST_MUTATION);

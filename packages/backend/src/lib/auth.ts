@@ -27,7 +27,7 @@ export const getUserFromToken = async (token: string): Promise<User | null> => {
     return {
       ...user,
       fullName: `${user.firstName} ${user.lastName}`,
-    } as User;
+    } as any as User;
   } catch {
     return null;
   }

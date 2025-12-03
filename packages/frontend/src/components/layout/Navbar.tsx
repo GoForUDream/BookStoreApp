@@ -21,7 +21,6 @@ import {
 import {
   ShoppingCart,
   Favorite,
-  Person,
   Menu as MenuIcon,
   Search,
   Close,

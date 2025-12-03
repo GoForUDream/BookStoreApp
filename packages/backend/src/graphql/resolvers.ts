@@ -160,13 +160,13 @@ export const resolvers = {
         include: { book: true },
       });
 
-      const subtotal = items.reduce((sum, item) => sum + item.book.price * item.quantity, 0);
+      const subtotal = items.reduce((sum: number, item: any) => sum + item.book.price * item.quantity, 0);
       const shipping = subtotal >= config.shipping.freeThreshold ? 0 : config.shipping.cost;
       const tax = subtotal * config.tax.rate;
 
       return {
         items,
-        itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
+        itemCount: items.reduce((sum: number, item: any) => sum + item.quantity, 0),
         subtotal,
         tax,
         shipping,

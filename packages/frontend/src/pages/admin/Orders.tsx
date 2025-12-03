@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { Box, Typography, Card, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Chip, Select, MenuItem, FormControl, InputLabel, Pagination, Dialog, DialogTitle, DialogContent, Avatar, Skeleton } from '@mui/material';
+import { Box, Typography, Card, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Select, MenuItem, FormControl, InputLabel, Pagination, Dialog, DialogTitle, DialogContent, Avatar, Skeleton } from '@mui/material';
 import { ADMIN_ORDERS_QUERY, UPDATE_ORDER_STATUS_MUTATION } from '../../graphql/operations';
 import { OrderStatus } from '@bookstore/shared';
 import toast from 'react-hot-toast';
-
-const statusColors: Record<OrderStatus, 'warning' | 'info' | 'primary' | 'success' | 'error'> = {
-  [OrderStatus.PENDING]: 'warning', [OrderStatus.PROCESSING]: 'info', [OrderStatus.SHIPPED]: 'primary', [OrderStatus.DELIVERED]: 'success', [OrderStatus.CANCELLED]: 'error',
-};
 
 const Orders = () => {
   const [page, setPage] = useState(1);

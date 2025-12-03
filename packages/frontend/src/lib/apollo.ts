@@ -24,7 +24,7 @@ export const apolloClient = new ApolloClient({
         fields: {
           books: {
             keyArgs: ['filters', 'sortBy', 'sortOrder'],
-            merge(existing, incoming) {
+            merge(_existing, incoming) {
               return incoming;
             },
           },

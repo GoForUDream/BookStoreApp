@@ -1,116 +1,113 @@
 # Bookstore App
 
-A full-stack bookstore application built with TypeScript monorepo architecture.
+A modern full-stack e-commerce application built with TypeScript, GraphQL, and React.
 
-## Tech Stack
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-22-green)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
 
-- **Backend**: Node.js, Apollo Server, GraphQL, Prisma, PostgreSQL
-- **Frontend**: React, Vite, TailwindCSS, Material-UI, Apollo Client, Zustand
-- **Shared**: TypeScript types, GraphQL schema, configuration
-- **Database**: PostgreSQL (Docker)
+---
 
-## Project Structure
+## 🛠️ Tech Stack
+
+**Backend**
+- Node.js, Apollo Server (GraphQL), Prisma ORM 7, PostgreSQL
+
+**Frontend**
+- React 18, Vite, TailwindCSS, Material-UI, Apollo Client, Zustand
+
+**DevOps**
+- Docker, Docker Compose, Multi-stage builds, GitHub Actions (CI/CD)
+
+## 📁 Project Structure
 
 ```
 bookstore-app/
 ├── packages/
-│   ├── shared/          # Shared types, schema, config
 │   ├── backend/         # GraphQL API server
-│   └── frontend/        # React application
-├── docker-compose.yml   # PostgreSQL container
-└── package.json         # Workspace configuration
+│   ├── frontend/        # React SPA
+│   └── shared/          # Shared types & schema
+├── docker-compose.yml
+└── .github/workflows/   # CI/CD pipelines
 ```
 
-## Prerequisites
+## 🚀 Quick Start
 
-- Node.js 18+
-- Docker & Docker Compose
-- npm 9+
+### With Docker (Recommended)
 
-## Quick Start
-
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Start PostgreSQL database**
-   ```bash
-   npm run docker:up
-   ```
-
-3. **Setup database and seed data**
-   ```bash
-   npm run db:push
-   npm run db:seed
-   ```
-
-4. **Start development servers**
-   ```bash
-   npm run dev
-   ```
-
-Or run the complete setup in one command:
 ```bash
-npm run setup
+# Clone and start
+git clone <your-repo-url>
+cd bookstore-app
+docker-compose up
+
+# Access the app at http://localhost:3000
+# Sample data is seeded automatically!
 ```
 
-## Access Points
+### Local Development
 
-- **Frontend**: http://localhost:3000
-- **GraphQL API**: http://localhost:4000/graphql
-- **Health Check**: http://localhost:4000/health
+**Prerequisites:** Node.js 18+, Docker
 
-## Demo Credentials
+```bash
+npm install
+npm run setup    # Installs deps, starts DB, runs migrations, seeds data
+npm run dev      # Start development servers
+```
+
+---
+
+## ✨ Features
+
+**Customer Features**
+- Browse & search books with advanced filters
+- Shopping cart & checkout
+- Order history & tracking
+- Wishlist management
+- User reviews & ratings
+
+**Admin Dashboard**
+- Analytics & sales metrics
+- Book & category management
+- Order processing
+- User & review moderation
+
+## 🔐 Demo Credentials
 
 | Role  | Email                | Password  |
 |-------|---------------------|-----------|
 | Admin | admin@bookstore.com | admin123  |
 | User  | user@bookstore.com  | user123   |
 
-## Available Scripts
+## 🐳 Docker
 
-| Command            | Description                          |
-|--------------------|--------------------------------------|
-| `npm run dev`      | Start both backend and frontend      |
-| `npm run docker:up`| Start PostgreSQL container           |
-| `npm run docker:down`| Stop PostgreSQL container          |
-| `npm run db:push`  | Push schema to database              |
-| `npm run db:seed`  | Seed database with sample data       |
-| `npm run db:studio`| Open Prisma Studio                   |
-| `npm run setup`    | Full setup (install + db + seed)     |
-
-## Features
-
-### Shop
-- Browse books with filters (search, category, price, featured)
-- Book detail pages with reviews
-- Shopping cart
-- Checkout process
-- Order history
-- Wishlist
-- User profile management
-
-### Admin
-- Dashboard with stats
-- Book management (CRUD)
-- Category management
-- Order management with status updates
-- User management with role assignment
-- Review moderation
-
-## Environment Variables
-
-Backend `.env` (already configured for local development):
-```
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bookstore"
-JWT_SECRET="dev-secret-key-change-in-production"
-```
-
-## Stopping the App
-
+**Common Commands:**
 ```bash
-npm run docker:down
+docker-compose up              # Start all services
+docker-compose up -d           # Start in background
+docker-compose down            # Stop all services
+docker-compose down -v         # Stop and remove data
+docker-compose logs -f         # View logs
+docker-compose build           # Rebuild images
 ```
 
-This will stop the PostgreSQL container. Data is persisted in a Docker volume.
+**Architecture:**
+- Multi-stage builds for optimized production images
+- Health checks & service dependencies
+- Persistent volumes for database
+- Nginx for frontend serving
+
+## 📋 Development Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development servers |
+| `npm run build` | Build all packages |
+| `npm run db:push` | Sync database schema |
+| `npm run db:seed` | Seed sample data |
+| `npm run db:studio` | Open Prisma Studio |
+
+## 🌐 Deployment
+
+*Coming soon: CI/CD pipeline, cloud deployment, monitoring*
