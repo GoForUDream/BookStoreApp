@@ -30,7 +30,7 @@ RUN npx prisma generate
 
 #Build shared package
 WORKDIR /app/packages/shared
-RUN npm run build || true
+RUN npm run build
 
 #Build backend Typescript
 WORKDIR /app/packages/backend

@@ -85,6 +85,9 @@ jobs:
       - name: Generate Prisma Client
         run: npm run db:generate
 
+      - name: Build shared package
+        run: npm run build -w @bookstore/shared
+
       - name: Run backend tests
         run: npm run test -w @bookstore/backend
         env:
