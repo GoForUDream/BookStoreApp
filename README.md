@@ -6,6 +6,9 @@ A modern full-stack e-commerce application built with TypeScript, GraphQL, and R
 [![Node.js](https://img.shields.io/badge/Node.js-22-green)](https://nodejs.org/)
 [![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
+[![CI](https://img.shields.io/badge/CI-GitHub_Actions-success)](https://github.com/features/actions)
+[![Tests](https://img.shields.io/badge/Tests-24_Passing-success)]()
+[![Coverage](https://img.shields.io/badge/Coverage-28%25-yellow)]()
 
 ---
 
@@ -18,7 +21,10 @@ A modern full-stack e-commerce application built with TypeScript, GraphQL, and R
 - React 18, Vite, TailwindCSS, Material-UI, Apollo Client, Zustand
 
 **DevOps**
-- Docker, Docker Compose, Multi-stage builds, GitHub Actions (CI/CD)
+- Docker, Docker Compose, Multi-stage builds
+- GitHub Actions CI/CD pipeline
+- Automated testing (Jest), Code coverage
+- Branch protection with required status checks
 
 ## 📁 Project Structure
 
@@ -104,10 +110,37 @@ docker-compose build           # Rebuild images
 |---------|-------------|
 | `npm run dev` | Start development servers |
 | `npm run build` | Build all packages |
+| `npm test` | Run all tests |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with coverage report |
 | `npm run db:push` | Sync database schema |
 | `npm run db:seed` | Seed sample data |
 | `npm run db:studio` | Open Prisma Studio |
+| `npm run docker:up` | Start database in Docker (dev) |
+| `npm run docker:down` | Stop Docker containers |
+
+## 🔄 CI/CD & Testing
+
+This project includes a **GitHub Actions CI/CD pipeline** for automated testing and deployment workflows.
+
+**CI Pipeline:**
+- Automated testing on every Pull Request
+- TypeScript type checking & build verification
+- 24 unit & integration tests with PostgreSQL
+- Docker build validation
+- Branch protection (cannot merge if tests fail)
+
+**Branch Strategy:**
+- `main` - Production-ready code
+- `dev` - Development/integration branch (default)
+- `feature/*` - Feature branches (create PRs to dev)
+
+**Running Tests:**
+```bash
+npm test                # Run all tests
+npm run test:coverage   # Run with coverage report
+```
 
 ## 🌐 Deployment
 
-*Coming soon: CI/CD pipeline, cloud deployment, monitoring*
+**Status:** CI configured, CD deployment coming soon (AWS)

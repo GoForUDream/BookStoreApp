@@ -8,12 +8,19 @@ COPY package*.json ./
 COPY packages/frontend/package*.json ./packages/frontend/
 COPY packages/shared/package*.json ./packages/shared/
 
-# Install dependencies
-RUN npm ci --workspace=@bookstore/frontend
+# Install dependencies (frontend + shared)
+RUN npm ci --workspace=@bookstore/frontend --workspace=@bookstore/shared
+
+# Copy TypeScript config (needed for builds)
+COPY tsconfig.json ./
 
 # Copy source code
 COPY packages/frontend ./packages/frontend
 COPY packages/shared ./packages/shared
+
+# Build shared package first (frontend depends on it)
+WORKDIR /app/packages/shared
+RUN npm run build
 
 # Build the app
 WORKDIR /app/packages/frontend

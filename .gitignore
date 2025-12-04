@@ -91,6 +91,11 @@ docker-compose.override.yml
 # TypeScript
 *.tsbuildinfo
 
+# Generated config files (compiled from .ts source)
+vite.config.js
+vite.config.d.ts
+*.config.js.map
+
 # Package manager
 .npm
 .pnpm-store/
