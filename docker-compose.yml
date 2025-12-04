@@ -20,6 +20,7 @@ services:
 
   #Backend API
   backend:
+    profiles: ["prod"]  # Only runs when --profile prod is specified
     build:
       context: .
       dockerfile: packages/backend/Dockerfile
@@ -45,6 +46,7 @@ services:
 
   #Frontend
   frontend:
+    profiles: ["prod"]  # Only runs when --profile prod is specified
     build:
       context: .
       dockerfile: packages/frontend/Dockerfile
